@@ -1,10 +1,31 @@
 .App {
   text-align: center;
+  flex-direction: row;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.Main-comp {
+  width: 600px;
+  height: 600px;
+  border-radius: 8px;
+  background-color: grey;
+  border-style: solid;
+  border-color: black;
+}
+
+.Second-comp {
+  width: 300px;
+  height: 600px;
+  background-color: grey;
+  margin-left: 50px;
+  border-radius: 8px;
+  padding: 5px;
+  border-style: solid;
+  border-color: black;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -17,11 +38,12 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+
 }
 
 .App-link {
@@ -32,6 +54,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
