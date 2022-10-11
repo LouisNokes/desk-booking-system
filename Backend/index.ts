@@ -11,7 +11,7 @@ const app = express();
 //Check Username against list
 
 //Import custom Module
-const authe = require("./backElements/auth.ts");
+const authe = require("./backElements/auth");
 //Function to call
 function authentication(userID : String ){
 
