@@ -9,12 +9,21 @@
 }
 
 .Main-comp {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100ph;
   width: 600px;
   height: 600px;
   border-radius: 8px;
   background-color: grey;
   border-style: solid;
   border-color: black;
+}
+
+.form-element {
+  display: flex;
+  flex-direction: column;
 }
 
 .Second-comp {
@@ -43,7 +52,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-
 }
 
 .App-link {
