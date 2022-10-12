@@ -6,7 +6,8 @@ const app = express();
 //app.get('api/:id', (req,res) => { res.status(200).send(req.query.id)});
 //app.post('api/', (req,res) => {req.send(req.params)});
 
-
+app.use(express.urlencoded({ extended: false}));
+app.use(express.json());
 
 //Check Username against list
 
@@ -25,6 +26,17 @@ else{
 //When requset to '/api/user/' received run authentication
 app.get('/api/user/:id', (req,res) => {
     const user = authentication(req.params.id);
+
+    if(user){
+        res.send(user);
+    }
+    else{
+        res.status(404).send("User Not found");
+    }
+    
+});
+app.post('/api/user/', (req,res) => {
+    const user = authentication(req.body.id);
 
     if(user){
         res.send(user);
