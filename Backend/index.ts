@@ -35,15 +35,32 @@ app.get('/api/user/:id', (req,res) => {
     
 });
 
-//Get Booking for a given seat
+//Get Seats Given Site
+const getDesks = require("./backElements/getseats")
 
-//Is Seat Booked
+function getSiteDesks(site : string){
+    return getDesks.getSeats(site);
+};
+
+app.get('/api/desks/:site', (req,res) => {
+    const siteinfo = getSiteDesks(req.params.site);
+
+    if(siteinfo){
+        res.send(siteinfo);
+    }
+    else{
+        res.status(404).send("Site Not found");
+    }
+});
+
+//Get Bookings for a given seat
+
 
 //Check for booked seat for a given period
 
 //Book Seat for given period
 
-//Get Seats Given Site
+
 
 //Get seat details
 
