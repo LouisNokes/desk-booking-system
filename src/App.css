@@ -1,3 +1,6 @@
+@import "rsuite/dist/rsuite.css";
+
+
 .App {
   text-align: center;
   flex-direction: row;
@@ -42,12 +45,27 @@
   font-size: 15px;
 }
 
-.Input-div {
+.Input-div,
+.Desc-div {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
+.Desc-div {
+  margin-top: 50px;
+}
+
+.Logo-div {}
+
+.logo {
+  width: 300px;
+  height: 120px;
+  margin-top: 60px;
+
+}
+
 
 .Submit-btn {
   background-color: red;
@@ -61,6 +79,7 @@
   font-size: 16px;
   margin-top: 5px;
   position: absolute;
+  margin-top: 310px;
 }
 
 .Desc-input {
@@ -71,16 +90,22 @@
   border-style: solid;
   border-radius: 5px;
   font-size: 15px;
-  position: absolute;
+  position: fixed;
+  margin-top: 100px;
+}
+
+.calendar {
+  border-style: solid;
+  border-color: black;
+  margin-top: 5px;
+  border-radius: 10px;
 }
 
 .Drop-down {
-  position: relative;
-  overflow: hidden;
   background-color: white;
-  border: 1px solid #ccc;
+  overflow-y: scroll;
+  border: 3px solid rgb(3, 3, 3);
   border-radius: 2px;
-  box-sizing: border-box;
   color: #333;
   cursor: default;
   outline: none;
@@ -89,21 +114,33 @@
   margin-right: 380px;
   font-size: 20px;
   margin-top: 5px;
+  height: 50px;
 }
 
-.Dropdown:hover {
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+.Drop-down:hover {
+  box-shadow: 0 1px 0 rgba(4, 0, 0, 0.06);
+}
+
+.Drop-div {
+  position: absolute;
+  flex-direction: row;
+  margin-left: 35px;
+}
+
+.Drop-div-2 {
+  position: absolute;
+  margin-left: 445px;
+  width: 500px;
 }
 
 .Arrow-class {
   border-color: #999 transparent transparent;
   border-style: solid;
   border-width: 5px 5px 0;
-  content: ' ';
+  content: '';
   display: block;
   height: 0;
   margin-top: -ceil(2.5);
-  position: absolute;
   right: 10px;
   top: 14px;
   width: 0
@@ -126,6 +163,7 @@
   color: white;
 
 }
+
 
 .App-link {
   color: #61dafb;
