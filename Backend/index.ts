@@ -2,37 +2,32 @@
 import express from "express";
 const app = express();
 
-//app.get('api/', (req,res) => { res.status(200).send("succcess")});
-//app.get('api/:id', (req,res) => { res.status(200).send(req.query.id)});
-//app.post('api/', (req,res) => {req.send(req.params)});
-
-
+app.get('api/', (req, res) => { res.status(200).send("succcess") });
+app.get('api/:id', (req, res) => { res.status(200).send(req.query.id) });
+app.post('api/', (req, res) => { res.send(req.params) });
 
 //Check Username against list
 
 //Import custom Module
 const authe = require("./backElements/auth");
 //Function to call
-function authentication(userID : String ){
-
-if(authe.checkUser(userID)){
-    return authe.checkUser(userID);
-}
-else{
-    return null
-}
+function authentication(userID: String) {
+    if (authe.checkUser(userID)) {
+        return authe.checkUser(userID);
+    }
+    else {
+        return null
+    }
 };
 //When requset to '/api/user/' received run authentication
-app.get('/api/user/:id', (req,res) => {
+app.get('/api/user/:id', (req, res) => {
     const user = authentication(req.params.id);
-
-    if(user){
+    if (user) {
         res.send(user);
     }
-    else{
+    else {
         res.status(404).send("User Not found");
     }
-    
 });
 
 //Get Booking for a given seat
@@ -55,4 +50,4 @@ app.get('/api/user/:id', (req,res) => {
 
 
 //Listens for request, Should be last to run, Keeps application running 
-app.listen(8000, () => console.log('Listening for queries on port 8000')); 
+app.listen(3000, () => console.log('Listening for queries on port 8000')); 
