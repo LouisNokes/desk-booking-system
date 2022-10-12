@@ -48,7 +48,7 @@ app.post('/api/user/', (req,res) => {
 });
 
 //Get Seats Given Site
-const getDesks = require("./backElements/getseats")
+const getDesks = require("./backElements/getseats");
 
 function getSiteDesks(site : string){
     return getDesks.getSeats(site);
@@ -66,11 +66,18 @@ app.get('/api/desks/:site', (req,res) => {
 });
 
 //Get Bookings for a given seat
-
-
 //Check for booked seat for a given period
+const getDeskBookings = require("./backElements/getDeskBookings");
+
+
+
 
 //Book Seat for given period
+const makeBooking = require("./backElements/makeBooking");
+
+
+
+//get users bookings
 
 
 
