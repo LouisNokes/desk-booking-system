@@ -1,5 +1,5 @@
-{
-    "Gloucseter":[{
+const sitemap = {
+    "Gloucester":[{
        "seatNum" : 10,
        "Restrictions" : ""
      
@@ -19,8 +19,7 @@
         "Restrictions" : "PROJX"
       
       }
-    
-    
+
     ],
     "Manchester":[{
         "seatNum" : 10,
@@ -51,4 +50,20 @@
      
      ]
    
-   }
+   };
+
+
+function getSeats(site : string){
+
+    console.log(site);
+    const stuff = sitemap;
+
+    if(site === "Gloucester"){const siteinfo = stuff.Gloucester;return siteinfo;}
+    else if(site === "Manchester"){const siteinfo = stuff.Manchester;return siteinfo;}
+    else {const siteinfo = null;return siteinfo;}
+    
+    
+};
+
+
+module.exports.getSeats = getSeats;

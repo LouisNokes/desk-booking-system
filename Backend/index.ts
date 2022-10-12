@@ -2,9 +2,14 @@
 import express from "express";
 const app = express();
 
-app.get('api/', (req, res) => { res.status(200).send("succcess") });
-app.get('api/:id', (req, res) => { res.status(200).send(req.query.id) });
-app.post('api/', (req, res) => { res.send(req.params) });
+
+//app.get('api/', (req,res) => { res.status(200).send("succcess")});
+//app.get('api/:id', (req,res) => { res.status(200).send(req.query.id)});
+//app.post('api/', (req,res) => {req.send(req.params)});
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 
 //Check Username against list
 
@@ -29,18 +34,65 @@ app.get('/api/user/:id', (req, res) => {
         res.status(404).send("User Not found");
     }
 });
+app.post('/api/user/', (req, res) => {
+    const user = authentication(req.body.id);
 
-//Get Booking for a given seat
+    if (user) {
+        res.send(user);
+    }
+    else {
+        res.status(404).send("User Not found");
+    }
 
-//Is Seat Booked
-
-//Check for booked seat for a given period
-
-//Book Seat for given period
+});
 
 //Get Seats Given Site
+const getDesks = require("./backElements/getseats");
+
+function getSiteDesks(site: string) {
+    return getDesks.getSeats(site);
+};
+
+app.get('/api/desks/:site', (req, res) => {
+    const siteinfo = getSiteDesks(req.params.site);
+
+    if (siteinfo) {
+        res.send(siteinfo);
+    }
+    else {
+        res.status(404).send("Site Not found");
+    }
+});
+
+
+//Check for booked seat for a given period
+const getDeskBookings = require("./backElements/getDeskBookings");
+
+//Get Bookings for a given seat
+app.get('/api/book/desks/:site/:seat', (req, res) => {
+
+});
+
+
+
+
+//Book Seat for given period
+const makeBooking = require("./backElements/makeBooking");
+
+app.post('/api/desks/book/', (req, res) => {
+
+});
+
+//get users bookings
+app.get("/api/book/user/:id", (req, res) => {
+
+});
+
 
 //Get seat details
+app.get('/api/desks/:site/:seat', (req, res) => {
+
+});
 
 
 
