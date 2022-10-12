@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <BookingDesk> </BookingDesk>
+        <BookingDesk></BookingDesk>
         <BookedDesk></BookedDesk>
       </header>
     </div>

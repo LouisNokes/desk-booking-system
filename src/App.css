@@ -1,3 +1,6 @@
+@import "rsuite/dist/rsuite.css";
+
+
 .App {
   text-align: center;
   flex-direction: row;
@@ -28,6 +31,121 @@
   border-color: black;
 }
 
+.Comp-heading {
+  font-size: 18px;
+  color: black;
+}
+
+.Comp-input {
+  width: 525px;
+  height: 30px;
+  border-style: solid;
+  border-color: black;
+  text-align: center;
+  font-size: 15px;
+}
+
+.Input-div,
+.Desc-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Desc-div {
+  margin-top: 50px;
+}
+
+.Logo-div {}
+
+.logo {
+  width: 300px;
+  height: 120px;
+  margin-top: 60px;
+
+}
+
+
+.Submit-btn {
+  background-color: red;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 7px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 5px;
+  position: absolute;
+  margin-top: 310px;
+}
+
+.Desc-input {
+  width: 500px;
+  height: 150px;
+  border-radius: 15px;
+  text-align: center;
+  border-style: solid;
+  border-radius: 5px;
+  font-size: 15px;
+  position: fixed;
+  margin-top: 100px;
+}
+
+.calendar {
+  border-style: solid;
+  border-color: black;
+  margin-top: 5px;
+  border-radius: 10px;
+}
+
+.Drop-down {
+  background-color: white;
+  overflow-y: scroll;
+  border: 3px solid rgb(3, 3, 3);
+  border-radius: 2px;
+  color: #333;
+  cursor: default;
+  outline: none;
+  padding: 2px 1px 2px 2px;
+  transition: all 200ms ease;
+  margin-right: 380px;
+  font-size: 20px;
+  margin-top: 5px;
+  height: 50px;
+}
+
+.Drop-down:hover {
+  box-shadow: 0 1px 0 rgba(4, 0, 0, 0.06);
+}
+
+.Drop-div {
+  position: absolute;
+  flex-direction: row;
+  margin-left: 35px;
+}
+
+.Drop-div-2 {
+  position: absolute;
+  margin-left: 445px;
+  width: 500px;
+}
+
+.Arrow-class {
+  border-color: #999 transparent transparent;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  content: '';
+  display: block;
+  height: 0;
+  margin-top: -ceil(2.5);
+  right: 10px;
+  top: 14px;
+  width: 0
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -45,6 +163,7 @@
   color: white;
 
 }
+
 
 .App-link {
   color: #61dafb;
