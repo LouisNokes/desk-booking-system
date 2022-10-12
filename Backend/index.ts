@@ -65,9 +65,14 @@ app.get('/api/desks/:site', (req,res) => {
     }
 });
 
-//Get Bookings for a given seat
+
 //Check for booked seat for a given period
 const getDeskBookings = require("./backElements/getDeskBookings");
+
+//Get Bookings for a given seat
+app.get('/api/book/desks/:site/:seat', (req,res) => {
+
+});
 
 
 
@@ -75,13 +80,20 @@ const getDeskBookings = require("./backElements/getDeskBookings");
 //Book Seat for given period
 const makeBooking = require("./backElements/makeBooking");
 
+app.post('/api/desks/book/', (req,res) => {
 
+});
 
 //get users bookings
+app.get("/api/book/user/:id", (req,res)=>{
 
+});
 
 
 //Get seat details
+app.get('/api/desks/:site/:seat', (req,res) => {
+
+});
 
 
 
