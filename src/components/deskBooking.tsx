@@ -34,7 +34,7 @@ export const BookingDesk: FC<bookingProps> = () => {
 
     };
 
-    const [seatNum, setSeatNum] = useState([ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
+    const [seatNumb, setSeatNumb] = useState([ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
 
     const updateSeats = (val : string) => {
         //fetch.then(setSeatNum([response.seatID]))
@@ -42,9 +42,21 @@ export const BookingDesk: FC<bookingProps> = () => {
 
         setLoc(val); 
         console.log(val); 
+        let actualData = [{"seatNum" : 0, "Restrictions" : ""},{"seatNum" : 1, "Restrictions" : ""}]
+        setSeatNumb([]);
+        
+        let localSN : Array<string> = [];
         fetch(`http://localhost:8000/api/desks/${val}`)
         .then((response) => response.json())
-        .then((actualData) => console.log(actualData));
+        .then((actualData) => {console.log(actualData);
+         actualData.map((item : any,key : any) => {
+           if("seatNum" in item){localSN.push(item.seatNum);};
+            console.log(item.seatNum);
+         })   
+         setSeatNumb(localSN);   
+        });
+        
+        
 
 
     };
@@ -62,7 +74,7 @@ export const BookingDesk: FC<bookingProps> = () => {
             {/* First dropdown menu div */}
             <div className='Drop-div'>
                 <Dropdown className='Drop-down' arrowClassName='Arrow-class' options={locations} placeholder="Location" value={loc} onChange={(e) => {updateSeats(e.value);}}/>
-                <Dropdown className='Drop-down' arrowClassName='Arrow-class' options={seatNum} placeholder="Desk number" value={seat} onChange={(e) => {setSeat(e.value); console.log(seat);}}/>
+                <Dropdown className='Drop-down' arrowClassName='Arrow-class' options={seatNumb} placeholder="Desk number" value={seat} onChange={(e) => {setSeat(e.value); console.log(seat);}}/>
             </div>
             {/* Second dropdown menu div */}
             <div className='Drop-div-2'>
