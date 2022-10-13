@@ -94,7 +94,7 @@ app.get('/api/book/desks/:site/:seat', (req, res) => {
 const makeBooking = require("./backElements/makeBooking");
 
 app.post('/api/desks/book/', (req, res) => {
-
+    makeBooking.bookDesk(req.body);
 });
 
 //get users bookings
