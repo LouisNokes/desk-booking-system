@@ -15,7 +15,7 @@
   width: 600px;
   height: 600px;
   border-radius: 8px;
-  background-color: grey;
+  background-color: rgb(128, 128, 128);
   border-style: solid;
   border-color: black;
 }
@@ -24,11 +24,11 @@
   width: 300px;
   height: 600px;
   background-color: grey;
-  margin-left: 50px;
+  margin-left: 40px;
   border-radius: 8px;
-  padding: 5px;
   border-style: solid;
   border-color: black;
+  overflow-y: scroll;
 }
 
 .Comp-heading {
@@ -43,6 +43,7 @@
   border-color: black;
   text-align: center;
   font-size: 15px;
+  color: black;
 }
 
 .Input-div,
@@ -57,13 +58,10 @@
   margin-top: 50px;
 }
 
-.Logo-div {}
-
 .logo {
   width: 300px;
   height: 120px;
   margin-top: 60px;
-
 }
 
 
@@ -83,6 +81,7 @@
 }
 
 .Desc-input {
+  color: black;
   width: 500px;
   height: 150px;
   border-radius: 15px;
@@ -92,6 +91,21 @@
   font-size: 15px;
   position: fixed;
   margin-top: 100px;
+  border-color: black;
+}
+
+.Desk-comp {
+  height: 70px;
+  width: 220px;
+  border-radius: 10px;
+  border-color: black;
+  background-color: white;
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 7px;
+
 }
 
 .calendar {
