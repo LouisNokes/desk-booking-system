@@ -64,17 +64,34 @@ app.get('/api/desks/:site', (req, res) => {
     }
 });
 
-
 //Check for booked seat for a given period
 const getDeskBookings = require("./backElements/getDeskBookings");
 
+function getBookedDesk(site: string, seatNum: string) {
+    return getDeskBookings.getBookingBySeat(site, seatNum);
+}
 //Get Bookings for a given seat
-app.get('/api/book/desks/:site/:seat', (req, res) => {
-
+app.get('/api/book/desks/:site/:seatNum', (req, res) => {
+    const seatInfo = getBookedDesk(req.params.site, req.params.seatNum);
+    if (seatInfo) {
+        res.send(seatInfo);
+    } else {
+        res.status(404).send('Site Not found')
+    }
 });
 
-
-
+function getBookedDate(site: string, seatNum: string, datefr: string) {
+    return getDeskBookings.getBookingByDate(site, seatNum, datefr);
+}
+//Get Bookings for a given seat and date
+app.get('/api/book/desks/:site/:seatNum/:date', (req, res) => {
+    const seatInfo = getBookedDate(req.params.site, req.params.seatNum, req.params.date);
+    if (seatInfo) {
+        res.send(seatInfo);
+    } else {
+        res.status(404).send('Site Not found')
+    }
+});
 
 //Book Seat for given period
 const makeBooking = require("./backElements/makeBooking");
@@ -102,4 +119,4 @@ app.get('/api/desks/:site/:seat', (req, res) => {
 
 
 //Listens for request, Should be last to run, Keeps application running 
-app.listen(3000, () => console.log('Listening for queries on port 8000')); 
+app.listen(8000, () => console.log('Listening for queries on port 8000')); 
