@@ -68,6 +68,20 @@ app.get('/api/desks/:site', (req, res) => {
 //Check for booked seat for a given period
 const getDeskBookings = require("./backElements/getDeskBookings");
 
+function getBookedDesk(site: string, seatNum: string) {
+    return getDeskBookings.getBookings(site, seatNum);
+}
+//Get Bookings for a given seat
+app.get('/api/book/desks/:site/:seatNum', (req, res) => {
+    const seatInfo = getBookedDesk(req.params.site, req.params.seatNum);
+    if (seatInfo) {
+        res.send(seatInfo);
+    } else {
+        res.status(404).send('Site Not found')
+    }
+});
+
+
 //Get Bookings for a given seat
 app.get('/api/book/desks/:site/:seat', (req, res) => {
 
