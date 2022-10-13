@@ -102,4 +102,4 @@ app.get('/api/desks/:site/:seat', (req, res) => {
 
 
 //Listens for request, Should be last to run, Keeps application running 
-app.listen(3000, () => console.log('Listening for queries on port 8000')); 
+app.listen(8000, () => console.log('Listening for queries on port 8000')); 
