@@ -2,45 +2,37 @@ const bookedDesk =
 {
    "Manchester": [{
       "seatNum": 1,
-      "Date-fr": '03/10/2022',
-      "Date-to": '03/10/2022',
-      "isBooked": true
+      "Datefr": '03-10-2022',
+      "Dateto": '03-10-2022',
    },
    {
       "seatNum": 1,
-      "Date-fr": '04/10/2022',
-      "Date-to": '04/10/2022',
-      "isBooked": true
+      "Datefr": '04-10-2022',
+      "Dateto": '04-10-2022',
    },
    {
       "seatNum": 2,
-      "Datefr": '05/10/2022',
-      "Dateto": '05/10/2022',
-      "isBooked": false
-
+      "Datefr": '05-10-2022',
+      "Dateto": '05-10-2022',
    }],
    "Gloucester": [{
       "seatNum": 1,
-      "Date-fr": '03/10/2022',
-      "Date-to": '03/10/2022',
-      "isBooked": true
+      "Datefr": '03-10-2022',
+      "Dateto": '03-10-2022',
    },
    {
       "seatNum": 1,
-      "Date-fr": '04/10/2022',
-      "Date-to": '04/10/2022',
-      "isBooked": true
+      "Datefr": '04-10-2022',
+      "Dateto": '04-10-2022',
    },
    {
       "seatNum": 6,
-      "Datefr": '05/10/2022',
-      "Dateto": '05/10/2022',
-      "isBooked": false
-
+      "Datefr": '05-10-2022',
+      "Dateto": '05-10-2022',
    }]
 };
 
-function getBookings(site: string, seatNum: string, datefr?: string, dateto?: string) {
+function getBookingBySeat(site: string, seatNum: string) {
    const bookArrMan = bookedDesk.Manchester;
    const bookArrGlo = bookedDesk.Gloucester;
 
@@ -55,20 +47,30 @@ function getBookings(site: string, seatNum: string, datefr?: string, dateto?: st
          return booking.seatNum === parseInt(seatNum)
       })
       return siteBookings;
-
    }
-
 };
 
+function getBookingByDate(site: string, seatNum: string, datefr: string) {
+   const bookArrMan = bookedDesk.Manchester;
+   const bookArrGlo = bookedDesk.Gloucester;
+
+   if (site === "Manchester") {
+      const siteBookings = bookArrMan.filter(booking => {
+         return booking.seatNum === parseInt(seatNum) && booking.Datefr === datefr
+      })
+      return siteBookings;
+   } else if (site === "Gloucester") {
+      const siteBookings = bookArrGlo.filter(booking => {
+         return booking.seatNum === parseInt(seatNum) && booking.Datefr === datefr
+      })
+      return siteBookings;
+   }
+}
+
 function getUsrBooking(usrID: string, site?: string, seat?: string, datefr?: string, dateto?: string) {
-
-
-
-
    return null;//Return desk bookings
-
-
 };
 
 module.exports.getUsrBooking = getUsrBooking;
-module.exports.getBookings = getBookings;
+module.exports.getBookingBySeat = getBookingBySeat;
+module.exports.getBookingByDate = getBookingByDate;
