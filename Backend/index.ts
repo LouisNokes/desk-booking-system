@@ -108,8 +108,13 @@ app.get("/api/book/user/:id", (req, res) => {
 
 //Get seat details
 app.get('/api/desks/:site/:seat', (req, res) => {
-
-});
+    const seatinfo  = getDesks.getseatDetails(req.params.site,req.params.seat);
+    if (seatinfo) {
+        res.send(seatinfo);
+    }
+    else {
+        res.status(404).send("Seat Not found");}
+    });
 
 
 
