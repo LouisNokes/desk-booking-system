@@ -1,54 +1,80 @@
-const bookerDesk =
-{
-   "Manchester": [{
-      "seatNum": 1,
-      "Date-fr": '03/10/2022',
-      "Date-to": '03/10/2022',
-      "isBooked": true
-   },
-   {
-      "seatNum": 1,
-      "Date-fr": '04/10/2022',
-      "Date-to": '04/10/2022',
-      "isBooked": true
-   },
-   {
-      "seatNum": 2,
-      "Datefr": '05/10/2022',
-      "Dateto": '05/10/2022',
-      "isBooked": false
 
-   }],
-   "Gloucester": [{
-      "seatNum": 1,
-      "Date-fr": '03/10/2022',
-      "Date-to": '03/10/2022',
-      "isBooked": true
-   },
-   {
-      "seatNum": 1,
-      "Date-fr": '04/10/2022',
-      "Date-to": '04/10/2022',
-      "isBooked": true
-   },
-   {
-      "seatNum": 6,
-      "Datefr": '05/10/2022',
-      "Dateto": '05/10/2022',
-      "isBooked": false
 
-   }]
+const bookerDesk ={
+
+   "Manchester": [
+      {
+         "bookingID": 1,
+         "usrID": 1577,
+         "fromDate": "10/12/2022",
+         "toDate": "13/12/2022",
+         "fromTime": "0800",
+         "toTime": "1500",
+         "seatNum" : 11
+      },
+      {
+         "bookingID": 2,
+         "usrID": 1577,
+         "fromDate": "15/12/2022",
+         "toDate": "15/12/2022",
+         "fromTime": "0830",
+         "toTime": "1700",
+         "seatNum" : 13
+      }
+   ],
+
+   "Gloucester": [
+      {
+         "bookingID": 1,
+         "usrID": 1577,
+         "fromDate": "10/12/2022",
+         "toDate": "13/12/2022",
+         "fromTime": "0800",
+         "toTime": "1500",
+         "seatNum" : 10
+      },
+      {
+         "bookingID": 2,
+         "usrID": 2892,
+         "fromDate": "15/12/2022",
+         "toDate": "15/12/2022",
+         "fromTime": "0830",
+         "toTime": "1700",
+         "seatNum" : 15
+      }
+   ]
 };
+
 function bookDesk(attemptBooking : any ){
-
+   
     console.log(attemptBooking);
-    if(attemptBooking.site === "Gloucester"){console.log(attemptBooking.id,attemptBooking.seat,attemptBooking.datefr,attemptBooking.dateto);};
-  
+   // var bookings : Array<object> = [];
+   
+    if(attemptBooking.site === "Gloucester"){var bookings : any = bookerDesk.Gloucester }
+   //console.log(attemptBooking.id,attemptBooking.seat,attemptBooking.datefr,attemptBooking.dateto);
+   else if(attemptBooking.site === "Manchester"){var bookings : any = bookerDesk.Manchester }
+   else{
+      var bookings : any = [];
+   }
 
-   return null;//Return desk booking on success
+   const bookingId = bookings.length + 1;
+    const booking = {
+      //make booking object to push
+      "bookingID": bookingId,
+         "usrID": attemptBooking.id,
+         "fromDate": attemptBooking.datefr,
+         "toDate": attemptBooking.dateto,
+         "seatNum" : attemptBooking.seat
+   }
+   //console.log(bookings);
+
+   const newFile = bookings.push(booking);
+   console.log(bookings);
+   
+   return bookings[bookings.length-1];//Return desk booking on success
     
     
 };
-
+ 
 
 module.exports.bookDesk = bookDesk;

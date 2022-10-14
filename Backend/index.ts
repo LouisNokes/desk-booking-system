@@ -94,7 +94,16 @@ app.get('/api/book/desks/:site/:seat', (req, res) => {
 const makeBooking = require("./backElements/makeBooking");
 
 app.post('/api/desks/book/', (req, res) => {
-    makeBooking.bookDesk(req.body);
+    const confirm = makeBooking.bookDesk(req.body);
+    console.log("==========");
+    console.log(confirm);
+
+    if(confirm){
+        res.send(confirm);
+    }
+    else{
+        res.status(501).send("booking has failed")
+    }
 });
 
 //get users bookings
