@@ -64,12 +64,11 @@ app.get('/api/desks/:site', (req, res) => {
     }
 });
 
-
 //Check for booked seat for a given period
 const getDeskBookings = require("./backElements/getDeskBookings");
 
 function getBookedDesk(site: string, seatNum: string) {
-    return getDeskBookings.getBookings(site, seatNum);
+    return getDeskBookings.getBookingBySeat(site, seatNum);
 }
 //Get Bookings for a given seat
 app.get('/api/book/desks/:site/:seatNum', (req, res) => {
@@ -81,14 +80,18 @@ app.get('/api/book/desks/:site/:seatNum', (req, res) => {
     }
 });
 
-
-//Get Bookings for a given seat
-app.get('/api/book/desks/:site/:seat', (req, res) => {
-
+function getBookedDate(site: string, seatNum: string, datefr: string) {
+    return getDeskBookings.getBookingByDate(site, seatNum, datefr);
+}
+//Get Bookings for a given seat and date
+app.get('/api/book/desks/:site/:seatNum/:date', (req, res) => {
+    const seatInfo = getBookedDate(req.params.site, req.params.seatNum, req.params.date);
+    if (seatInfo) {
+        res.send(seatInfo);
+    } else {
+        res.status(404).send('Site Not found')
+    }
 });
-
-
-
 
 //Book Seat for given period
 const makeBooking = require("./backElements/makeBooking");
@@ -120,8 +123,13 @@ app.get("/api/book/user/:id", (req, res) => {
 
 //Get seat details
 app.get('/api/desks/:site/:seat', (req, res) => {
-
-});
+    const seatinfo  = getDesks.getseatDetails(req.params.site,req.params.seat);
+    if (seatinfo) {
+        res.send(seatinfo);
+    }
+    else {
+        res.status(404).send("Seat Not found");}
+    });
 
 
 
