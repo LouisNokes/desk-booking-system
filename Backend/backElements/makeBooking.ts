@@ -69,12 +69,28 @@ function bookDesk(attemptBooking : any ){
    //console.log(bookings);
 
    const newFile = bookings.push(booking);
-   console.log(bookings);
-   
-   return bookings[bookings.length-1];//Return desk booking on success
+   console.log(bookerDesk);
+
+
+   //bookings is an array of every previous booking for the site + the new one
+   //this just needs to overwrite the previous bookings for each site. 
+
+   return bookings[bookings.length-1];
     
-    
+};
+
+
+//backup function to show a booking was created
+function bookingsCreated(site : string){
+   if(site === "Gloucester"){var bookin : any = bookerDesk.Gloucester }
+   //console.log(attemptBooking.id,attemptBooking.seat,attemptBooking.datefr,attemptBooking.dateto);
+   else if(site === "Manchester"){var bookin : any = bookerDesk.Manchester }
+   else{
+      var bookin : any = [];
+   }
+   return bookin;
 };
  
 
 module.exports.bookDesk = bookDesk;
+module.exports.bookingsCreated = bookingsCreated

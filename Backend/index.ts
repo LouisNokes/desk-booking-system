@@ -95,8 +95,8 @@ const makeBooking = require("./backElements/makeBooking");
 
 app.post('/api/desks/book/', (req, res) => {
     const confirm = makeBooking.bookDesk(req.body);
-    console.log("==========");
-    console.log(confirm);
+    //console.log("==========");
+    //console.log(confirm);
 
     if(confirm){
         res.send(confirm);
@@ -104,6 +104,12 @@ app.post('/api/desks/book/', (req, res) => {
     else{
         res.status(501).send("booking has failed")
     }
+});
+
+//temporary site get to show bookings will be deleted after persistence is done
+app.get("/api/temp/:site", (req, res) => {
+    res.send(makeBooking.bookingsCreated(req.params.site));
+
 });
 
 //get users bookings
