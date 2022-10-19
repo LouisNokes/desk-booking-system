@@ -32,7 +32,18 @@ export const BookingDesk: FC<bookingProps> = () => {
     //When form submit run this code, should send POST request to backend
     const handleSubmit = (event: any) => {
         event.preventDefault();
-        alert(`Email ${email} , Loc ${loc} , seat ${seat} , date from ${dates[0]} , date to ${dates[1]}`)
+        
+        alert(`Email ${email} , Loc ${loc} , seat ${seat} , date from ${dates[0].toLocaleDateString()} , date to ${dates[1].toLocaleDateString()}`)
+       
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: `${email}`, seat: `${seat}`, site: `${loc}`, datefr: `${dates[0].toLocaleDateString()}`, dateto: `${dates[1].toLocaleDateString()}`})
+        };
+        fetch('http://localhost:8000/api/desks/book/', requestOptions)
+            .then(response => response.json())
+            .then(data => alert(data));
 
     };
 
