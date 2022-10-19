@@ -134,9 +134,11 @@ app.get('/api/desks/:site/:seat', (req, res) => {
 
 
 
-
-
-
+    const path = require("path");
+    app.use(express.static(__dirname + '/../build'))
+    app.get("/", (req, res) => {
+        res.sendFile(path.join(__dirname,"/../build/index.html"));
+       });
 
 //Listens for request, Should be last to run, Keeps application running 
 app.listen(8000, () => console.log('Listening for queries on port 8000')); 

@@ -34,6 +34,15 @@ export const BookingDesk: FC<bookingProps> = () => {
         event.preventDefault();
         alert(`Email ${email} , Loc ${loc} , seat ${seat} , date from ${dates[0]} , date to ${dates[1]}`)
 
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: `${email}`, seat: `${seat}`, site: `${loc}`, datefr: `${dates[0]}`, dateto: `${dates[1]}`})
+        };
+        fetch('http://localhost:8000/api/desks/book/', requestOptions)
+            .then(response => response.json())
+            .then(data => alert(data));
+
     };
 
     //sets default variables for seat numbs and initaites seatNumb state variable
