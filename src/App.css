@@ -95,7 +95,7 @@
 }
 
 .Desk-comp {
-  height: 70px;
+  height: 50px;
   width: 220px;
   border-radius: 10px;
   border-color: black;
@@ -105,7 +105,12 @@
   flex-direction: column;
   justify-content: space-evenly;
   margin-top: 7px;
+}
 
+
+.Desk-text {
+  font-size: 14px;
+  color: black;
 }
 
 .calendar {
@@ -117,7 +122,6 @@
 
 .Drop-down {
   background-color: white;
-  overflow-y: scroll;
   border: 3px solid rgb(3, 3, 3);
   border-radius: 2px;
   color: #333;
@@ -130,6 +134,7 @@
   margin-top: 5px;
   height: 50px;
 }
+
 
 .Drop-down:hover {
   box-shadow: 0 1px 0 rgba(4, 0, 0, 0.06);
@@ -148,7 +153,7 @@
 }
 
 .Arrow-class {
-  border-color: #999 transparent transparent;
+  border-color: rgb(0, 0, 0) transparent transparent;
   border-style: solid;
   border-width: 5px 5px 0;
   content: '';
@@ -159,6 +164,7 @@
   top: 14px;
   width: 0
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -175,20 +181,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-
 }
-
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }

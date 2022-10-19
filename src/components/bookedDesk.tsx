@@ -3,7 +3,9 @@ import { FC, useEffect, useState } from "react";
 
 import Desk from './desk';
 
-interface BookedProps { }
+interface BookedProps {
+
+}
 
 export const BookedDesk: FC<BookedProps> = () => {
     const [bookDesk, setBookedDesk] = useState<any>();

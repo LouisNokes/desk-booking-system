@@ -4,8 +4,9 @@ import '../App.css';
 
 const Desk: FC<any> = ({ desk }) => {
     return (
-        <div>
-            <p>{desk.seatNum}</p>
+        <div className="Desk-comp">
+            <p className="Desk-text">Desk: {desk.seatNum}</p>
+            <p>{desk.booked}</p>
         </div>
     );
 };
