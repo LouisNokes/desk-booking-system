@@ -15,7 +15,7 @@
   width: 600px;
   height: 600px;
   border-radius: 8px;
-  background-color: rgb(128, 128, 128);
+  background-color: rgb(217, 215, 215);
   border-style: solid;
   border-color: black;
 }
@@ -23,7 +23,7 @@
 .Second-comp {
   width: 300px;
   height: 600px;
-  background-color: grey;
+  background-color: rgb(217, 215, 215);
   margin-left: 40px;
   border-radius: 8px;
   border-style: solid;
