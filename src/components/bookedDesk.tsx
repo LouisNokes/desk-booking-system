@@ -1,24 +1,11 @@
-<<<<<<< Updated upstream
-import React, { FC } from 'react';
-import '../App.css';
-=======
 import "../App.css";
-import { Desk } from "./desk";
+
+import "../App.css";
 import React, { FC, useState } from "react";
->>>>>>> Stashed changes
 
 interface BookedProps {}
 
 export const BookedDesk: FC<BookedProps> = () => {
-<<<<<<< Updated upstream
-    return (
-        <div className='Second-comp'>
-
-        </div>
-    );
-};
-
-=======
   const [seatGap, setseatGap] = useState<any>();
   //Updates state variable SeatNumb to site specific as grabbed by API
   const retrieveSeats = (val: string) => {
@@ -41,14 +28,13 @@ export const BookedDesk: FC<BookedProps> = () => {
   retrieveSeats("Manchester");
   console.log(seatGap);
   // const seatRetriever = seatGap.map((item: any, key: any) => {});
+
   return (
-    <div className="Second-comp"> 
+    <div className="Second-comp">
       {seatGap.map((item: any, key: any) => {
         <h1>{item.seatNum}</h1>;
       })}
       <h1 className="Comp-heading">Booked desk</h1>
-      <Desk deskNum={1}></Desk>
     </div>
   );
 };
->>>>>>> Stashed changes
