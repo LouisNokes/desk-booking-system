@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-connection.query('SELECT * FROM users', (err : any, res : any)=>{
+connection.query('SELECT * FROM users', (err:any, res : any)=>{
     return console.log(res)
 });
 
