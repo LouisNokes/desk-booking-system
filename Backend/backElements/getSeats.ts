@@ -1,7 +1,7 @@
 const sitemap = {
   "Gloucester": [{
     "seatNum": 10,
-    "Restrictions": ""
+    "Restrictions": "PROJKT"
 
   },
 
@@ -64,4 +64,20 @@ function getSeats(site: string) {
 };
 
 
+function getseatDetails(site : string, seatNo:string ){
+
+  console.log(site);
+  const stuff = sitemap;
+
+  if(site === "Gloucester"){const siteinfo = stuff.Gloucester; 
+    const seat = siteinfo.find(item => {console.log(item);return item.seatNum === parseInt(seatNo)});
+    //console.log(seat);
+    return seat}
+
+  else if(site === "Manchester"){const siteinfo = stuff.Manchester;
+    const seat = siteinfo.find(item => {return item.seatNum === parseInt(seatNo)});return seat}
+  else {const siteinfo = null;return siteinfo;}
+};
+
+module.exports.getseatDetails = getseatDetails;
 module.exports.getSeats = getSeats;
