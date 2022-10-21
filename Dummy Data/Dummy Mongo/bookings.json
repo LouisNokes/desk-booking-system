@@ -1,0 +1,30 @@
+{
+   "bookings": [
+      {
+         "bookingID": 1,
+         "user":{
+            "usrID" : 1577,
+            "name" : "Edward Jones",
+            "email" : "edward.l.jones@raytheon.co.uk"
+          
+          },
+          "desk":{
+            "site" : "Gloucster",
+            "number" : 14,
+            "freetext" : ""
+          },
+         "fromDate": "10/12/2022",
+         "toDate": "13/12/2022",
+         "fromTime": "0800",
+         "toTime": "1500"
+      },
+      {
+         "bookingID": 2,
+         "usrID": 1577,
+         "fromDate": "15/12/2022",
+         "toDate": "15/12/2022",
+         "fromTime": "0830",
+         "toTime": "1700"
+      }
+   ]
+}

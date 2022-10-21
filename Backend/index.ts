@@ -2,6 +2,16 @@
 import express from "express";
 const app = express();
 
+let useSQL = true;
+if(useSQL){ 
+    var db = require("./backElements/SQL");
+    db.connecter();
+}
+else{
+    var db = require("./backElements/mongoDB");
+    db.connecter();
+}
+
 
 //app.get('api/', (req,res) => { res.status(200).send("succcess")});
 //app.get('api/:id', (req,res) => { res.status(200).send(req.query.id)});
@@ -17,7 +27,7 @@ app.use(express.json());
 const authe = require("./backElements/auth");
 //Function to call
 function authentication(userID: String) {
-    if (authe.checkUser(userID)) {
+    if (authe.checkUser(userID, db)) {
         return authe.checkUser(userID);
     }
     else {
