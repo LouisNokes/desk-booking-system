@@ -1,4 +1,5 @@
 
+
 const usersnf = 
     {
         "users":[{
@@ -22,8 +23,6 @@ function checkUser(userID : string, db : object){
     const arr = usersnf.users;
     const person = arr.find(usr => {return usr.usrID === parseInt(userID)} );
     return(person);
-
-
-};
+    };
 
 module.exports.checkUser = checkUser;
