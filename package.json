@@ -11,6 +11,7 @@
     "@types/node": "^16.11.65",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "mysql": "^2.18.1",
     "react": "^18.2.0",
     "react-calendar": "^3.9.0",
     "react-datepicker": "^4.8.0",
