@@ -2,12 +2,12 @@
 import express from "express";
 const app = express();
 
-let useSQL = true;
-if(useSQL){ 
+let useSQL = false;
+if (useSQL) {
     var db = require("./backElements/SQL");
     db.connecter();
 }
-else{
+else {
     var db = require("./backElements/mongoDB");
     db.connecter();
 }
@@ -111,10 +111,10 @@ app.post('/api/desks/book/', (req, res) => {
     //console.log("==========");
     //console.log(confirm);
 
-    if(confirm){
+    if (confirm) {
         res.send(confirm);
     }
-    else{
+    else {
         res.status(501).send("booking has failed")
     }
 });
@@ -133,22 +133,23 @@ app.get("/api/book/user/:id", (req, res) => {
 
 //Get seat details
 app.get('/api/desks/:site/:seat', (req, res) => {
-    const seatinfo  = getDesks.getseatDetails(req.params.site,req.params.seat);
+    const seatinfo = getDesks.getseatDetails(req.params.site, req.params.seat);
     if (seatinfo) {
         res.send(seatinfo);
     }
     else {
-        res.status(404).send("Seat Not found");}
-    });
+        res.status(404).send("Seat Not found");
+    }
+});
 
 
 
 
-    const path = require("path");
-    app.use(express.static(__dirname + '/../build'))
-    app.get("/", (req, res) => {
-        res.sendFile(path.join(__dirname,"/../build/index.html"));
-       });
+const path = require("path");
+app.use(express.static(__dirname + '/../build'))
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "/../build/index.html"));
+});
 
 //Listens for request, Should be last to run, Keeps application running 
-app.listen(8000, () => console.log('Listening for queries on port 8000')); 
+//app.listen(8000, () => console.log('Listening for queries on port 8000')); 
