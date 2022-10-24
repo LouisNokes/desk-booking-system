@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose1 = require('mongoose');
 
-const Schema = mongoose.Schema;
+const Schema = mongoose1.Schema;
 
 const userSchema = new Schema({
     userId: {
@@ -18,16 +18,12 @@ const userSchema = new Schema({
 });
 
 const deskSchema = new Schema({
-    userId: {
+    site: {
+        type: String,
+        required: true
+    },
+    number: {
         type: Number,
-        required: true
-    },
-    userName: {
-        type: String,
-        required: true
-    },
-    userEmail: {
-        type: String,
         required: true
     }
 });
@@ -39,7 +35,6 @@ const bookingSchema = new Schema({
         usrID: Number,
         name: String,
         email: String,
-        required: true
     },
     desk: {
         site: String,
@@ -50,9 +45,14 @@ const bookingSchema = new Schema({
     toDate: String,
     fromTime: String,
     toTime: String,
-    required: false,
 });
 
-module.exports.user = mongoose.model('User', userSchema);
-module.exports.desk = mongoose.model('Desk', deskSchema);
-module.exports.booking = mongoose.model('Booking', bookingSchema);
+const userModel = mongoose1.model('User', userSchema);
+const deskModel = mongoose1.model('Desk', deskSchema);
+const bookingModel = mongoose1.model('Booking', bookingSchema);
+
+module.exports = {
+    userModel,
+    deskModel,
+    bookingModel
+}

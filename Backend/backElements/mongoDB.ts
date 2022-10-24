@@ -1,8 +1,12 @@
-import express from "express";
+const express1 = require('express');
 const mongoose = require('mongoose');
-const app = express();
+const mongoRoutes = require('../routes/mongoRoutes');
 
+const app = express1();
 
+app.use(express1.json());
+
+app.use('/api/', mongoRoutes);
 
 function connecter() {
     mongoose.connect('mongodb+srv://LouisNokes:Password123@cluster0.qqhb1.mongodb.net/?retryWrites=true&w=majority').then(() => {
@@ -12,17 +16,14 @@ function connecter() {
     }).catch((error: string) => {
         console.log(error);
     });
+
 }
+
+
 
 // Mandatory 
 
-// Get all desk for a site
-function Mongodesks(site: string) {
 
-
-    console.log("Connected");
-    return "[{},{},{}]"
-};
 
 // Get a single desk for a site
 
@@ -30,16 +31,8 @@ function Mongodesks(site: string) {
 // Add a booking
 
 
-// Check availability for timeframe
-
-
-// Check if a user exist
-
-
-
 // Stretch goals
 
-// Get a users bookings
 
 // General availability
 
@@ -48,4 +41,4 @@ function Mongodesks(site: string) {
 
 
 module.exports.connecter = connecter;
-module.exports.desks = Mongodesks;
+
