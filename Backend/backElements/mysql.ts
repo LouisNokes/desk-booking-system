@@ -1,5 +1,7 @@
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
+import express from "express";
+const app = express();
+var mysql2      = require('mysql2');
+var connection = mysql2.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : 'password',
@@ -8,11 +10,16 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-connection.query('SELECT * FROM users', (err:any, res : any)=>{
-    return console.log(res)
+connection.query('SELECT * FROM users', (err:any, result : any)=>{
+  if (err) throw err;
+    return console.log(result)
 });
 
+//app.listen(8000, () => console.log('Listening for queries on port 8000')); 
+
 connection.end();
+
+
 
 
 
