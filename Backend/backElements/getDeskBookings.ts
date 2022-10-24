@@ -1,3 +1,5 @@
+import { ModifierFlags } from "typescript";
+
 const bookedDesk =
 {
    "Manchester": [{
@@ -71,6 +73,8 @@ function getUsrBooking(usrID: string, site?: string, seat?: string, datefr?: str
    return null;//Return desk bookings
 };
 
-module.exports.getUsrBooking = getUsrBooking;
-module.exports.getBookingBySeat = getBookingBySeat;
-module.exports.getBookingByDate = getBookingByDate;
+module.exports = {
+   getUsrBooking,
+   getBookingBySeat,
+   getBookingByDate
+}

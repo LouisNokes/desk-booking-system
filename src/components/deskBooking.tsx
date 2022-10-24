@@ -32,6 +32,8 @@ export const BookingDesk: FC<bookingProps> = () => {
     //When form submit run this code, should send POST request to backend
     const handleSubmit = (event: any) => {
         event.preventDefault();
+
+        alert(`Email ${email} , Loc ${loc} , seat ${seat} , date from ${dates[0]} , date to ${dates[1]}`)
         
         alert(`Email ${email} , Loc ${loc} , seat ${seat} , date from ${dates[0].toLocaleDateString()} , date to ${dates[1].toLocaleDateString()}`)
        
@@ -44,7 +46,6 @@ export const BookingDesk: FC<bookingProps> = () => {
         fetch('http://localhost:8000/api/desks/book/', requestOptions)
             .then(response => response.json())
             .then(data => alert(data));
-
     };
 
     //sets default variables for seat numbs and initaites seatNumb state variable
@@ -86,17 +87,16 @@ export const BookingDesk: FC<bookingProps> = () => {
                 </div>
                 {/* First dropdown menu div , Location and seats*/}
                 <div className='Drop-div'>
-                    <Dropdown className='Drop-down' arrowClassName='Arrow-class' options={locations} placeholder="Location" value={loc} onChange={(e) => { updateSeats(e.value); }} />
-                    <Dropdown className='Drop-down' arrowClassName='Arrow-class' options={seatNumb} placeholder="Desk number" value={seat} onChange={(e) => { setSeat(e.value); console.log(seat); }} />
+                    <Dropdown className='Drop-down' arrowClassName='Arrow-class' options={locations} placeholder="Location" />
+                    <Dropdown className='Drop-down' arrowClassName='Arrow-class' options={seatNumb} placeholder="Desk number" />
                 </div>
                 {/* Second dropdown menu div, time selection */}
                 <div className='Drop-div-2'>
-                    <Dropdown className='Drop-down' arrowClassName='Arrow-class' options={time} placeholder="From" />
-                    <Dropdown className='Drop-down' arrowClassName='Arrow-class' options={time} placeholder="Till" />
+                    <Dropdown className='Drop-down' arrowClassName='Arrow-class' options={time} placeholder="time-till" value={loc} onChange={(e) => { updateSeats(e.value); }} />
+                    <Dropdown className='Drop-down' arrowClassName='Arrow-class' options={time} placeholder="time-to" value={seat} onChange={(e) => { setSeat(e.value); console.log(seat); }} />
                 </div>
                 <div className='Calendar-div'>
                     <DateRangePicker className='calendar' showOneCalendar value={dates} onChange={(event) => { setDates(event!); console.log(dates); }} />
-
                 </div>
                 {/* Logo div */}
                 <div className='Logo-div'>

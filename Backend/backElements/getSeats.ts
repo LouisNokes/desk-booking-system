@@ -23,28 +23,28 @@ const sitemap = {
   ],
   "Manchester": [{
     "seatNum": 10,
-    "Restrictions": "PROJY"
-
+    "Restrictions": "PROJY",
+    "booked": true
   },
 
   {
     "seatNum": 13,
-    "Restrictions": "BROKEN"
-
+    "Restrictions": "BROKEN",
+    "booked": false
   }, {
     "seatNum": 14,
-    "Restrictions": ""
-
+    "Restrictions": "",
+    "booked": true
   },
   {
     "seatNum": 15,
-    "Restrictions": ""
-
+    "Restrictions": "",
+    "booked": true
   },
   {
     "seatNum": 20,
-    "Restrictions": ""
-
+    "Restrictions": "",
+    "booked": false
   }
 
 

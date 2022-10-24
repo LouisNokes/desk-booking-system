@@ -11,9 +11,19 @@
   pointer-events: none;
 }
 
+header .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .Main-comp {
   width: 600px;
   height: 600px;
+  margin-top: -120px;
   border-radius: 8px;
   background-color: rgb(217, 215, 215);
   border-style: solid;
@@ -23,6 +33,7 @@
 .Second-comp {
   width: 300px;
   height: 600px;
+  margin-top: -120px;
   background-color: rgb(217, 215, 215);
   margin-left: 40px;
   border-radius: 8px;
@@ -54,6 +65,22 @@
   justify-content: center;
 }
 
+.Booking-btn {
+  background-color: #e7e7e7;
+  color: black;
+  width: 150px;
+  height: 50px;
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+
+.Booking-btn:hover {
+  background-color: #8d8d8d;
+  color: white;
+}
+
 .Desc-div {
   margin-top: 50px;
 }
@@ -76,11 +103,12 @@
   display: inline-block;
   font-size: 16px;
   margin-top: 5px;
-  position: absolute;
-  margin-top: 310px;
+  position: relative;
+  margin-top: 3px;
 }
 
 .Desc-input {
+  position: relative;
   color: black;
   width: 500px;
   height: 150px;
@@ -89,13 +117,12 @@
   border-style: solid;
   border-radius: 5px;
   font-size: 15px;
-  position: fixed;
-  margin-top: 100px;
+  margin-top: -15px;
   border-color: black;
 }
 
 .Desk-comp {
-  height: 70px;
+  height: 50px;
   width: 220px;
   border-radius: 10px;
   border-color: black;
@@ -105,7 +132,12 @@
   flex-direction: column;
   justify-content: space-evenly;
   margin-top: 7px;
+}
 
+
+.Desk-text {
+  font-size: 14px;
+  color: black;
 }
 
 .calendar {
@@ -116,11 +148,11 @@
 }
 
 .Drop-down {
+  position: relative;
   background-color: white;
-  overflow-y: scroll;
   border: 3px solid rgb(3, 3, 3);
   border-radius: 2px;
-  color: #333;
+  color: rgb(10, 1, 1);
   cursor: default;
   outline: none;
   padding: 2px 1px 2px 2px;
@@ -130,6 +162,7 @@
   margin-top: 5px;
   height: 50px;
 }
+
 
 .Drop-down:hover {
   box-shadow: 0 1px 0 rgba(4, 0, 0, 0.06);
@@ -148,9 +181,9 @@
 }
 
 .Arrow-class {
-  border-color: #999 transparent transparent;
+  border-color: rgb(208, 20, 20) transparent transparent;
   border-style: solid;
-  border-width: 5px 5px 0;
+  border-width: 7px 7px 0;
   content: '';
   display: block;
   height: 0;
@@ -159,6 +192,7 @@
   top: 14px;
   width: 0
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -175,20 +209,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-
 }
-
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }

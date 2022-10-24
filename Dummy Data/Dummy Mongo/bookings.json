@@ -1,8 +1,18 @@
-const sam = {
+{
    "bookings": [
       {
          "bookingID": 1,
-         "usrID": 1577,
+         "user":{
+            "usrID" : 1577,
+            "name" : "Edward Jones",
+            "email" : "edward.l.jones@raytheon.co.uk"
+          
+          },
+          "desk":{
+            "site" : "Gloucster",
+            "number" : 14,
+            "freetext" : ""
+          },
          "fromDate": "10/12/2022",
          "toDate": "13/12/2022",
          "fromTime": "0800",
@@ -18,16 +28,3 @@ const sam = {
       }
    ]
 }
-
-function userBook(usrID: string) {
-   const arr = sam.bookings;
-   const person = arr.filter(usr => { return usr.usrID === parseInt(usrID) });
-   console.log(person);
-   return (person);
-
-   //return null;//Return desk booking on success
-};
-
-module.exports.userBook = userBook;
-
-//commit as new branch before messing around with code
