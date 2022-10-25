@@ -39,7 +39,7 @@ const bookingSchema = new Schema({
         usrID: Number,
         name: String,
         email: String,
-        required: true
+        
     },
     desk: {
         site: String,
@@ -50,7 +50,7 @@ const bookingSchema = new Schema({
     toDate: String,
     fromTime: String,
     toTime: String,
-    required: false,
+    
 });
 
 module.exports.user = mongoose.model('User', userSchema);
