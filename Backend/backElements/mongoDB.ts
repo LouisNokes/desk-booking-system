@@ -16,8 +16,7 @@ function connecter() {
     }).catch((error: string) => {
         console.log(error);
     });
-
-}
+};
 
 
 

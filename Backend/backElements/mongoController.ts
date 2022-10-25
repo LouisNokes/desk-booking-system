@@ -1,16 +1,17 @@
+import { Request, Response } from 'express';
 const { deskModel, userModel, bookingModel } = require('../models/mongoSchemas');
 const mongoose = require('mongoose');
 
 // Get all desk for a site
-const mongoDesks = async (req: any, res: any, site: String) => {
+const mongoDesks = async (req: Request, res: Response) => {
     // Change this so its not hard coded..
-    const desk = await deskModel.find({ site: "Manchester" });
+    const desk = await deskModel.find({ site: "Manchester" }).sort({ number: -1 });
 
-    res.status(200).json(desk);
+    return res.status(200).json(desk);
 }
 
 // Get a single desk for a site
-const mongoSingleDesk = async (req: any, res: any, site: String) => {
+const mongoSingleDesk = async (req: Request, res: Response) => {
     const { id } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -27,28 +28,25 @@ const mongoSingleDesk = async (req: any, res: any, site: String) => {
 }
 
 // Get all bookings by a date
-const mongoBookingByDate = async (req: any, res: any, date: String) => {
+const mongoBookingByDate = async (req: Request, res: Response) => {
     // Added createdAt field
     const booking = await bookingModel.find({ fromDate: "22/03/2022" });
 
-    res.status(200).json(booking);
+    return res.status(200).json(booking);
 }
 
 // Check if a user exist
-const mongoUserExist = async (req: any, res: any) => {
+const mongoUserExist = async (req: Request, res: Response) => {
     const { id } = req.params;
 
+    // If the ID param is invalid run this
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({ error: "No user exist" })
     }
 
     const userExist = await userModel.findById(id);
 
-    if (!userExist) {
-        return res.status(404).json({ error: 'No user exist' })
-    }
-
-    res.status(200).json(userExist);
+    return res.status(200).json(userExist);
 }
 
 
