@@ -1,5 +1,5 @@
 CREATE TABLE users (
-    usr_id INT PRIMARY KEY,
+    usr_id INT PRIMARY KEY NOT NULL,
     name VARCHAR(50),
     email VARCHAR(70));
 
@@ -17,14 +17,23 @@ SELECT * FROM sites;
 CREATE TABLE desks (
     desk_id INT PRIMARY KEY,
     desk_number INT,
-    FOREIGN KEY (desk_id) REFERENCES sites(site_id),
+    site_idA INT,
+    FOREIGN KEY (site_idA) REFERENCES sites(site_id),
     restrictions VARCHAR(10));
 
 SELECT * FROM desks;
 
 CREATE TABLE desk_bookings (
-    booking_id INT PRIMARY KEY,
-    booking_number INT,
-    date INT);
+    booking_id INT PRIMARY KEY AUTO_INCREMENT,
+    booking_desk INT,
+    booking_site INT,
+    booking_datefrom DATE,
+    booking_dateto DATE,
+    booking_userid INT,
+    FOREIGN KEY (booking_site) REFERENCES sites(site_id),
+    FOREIGN KEY (booking_desk) REFERENCES desks(desk_id)
 
-SELECT * FROM desks_bookings;
+    );
+
+SELECT * FROM desk_bookings;
+    FOREIGN KEY (booking_userid) REFERENCES users(usr_id)

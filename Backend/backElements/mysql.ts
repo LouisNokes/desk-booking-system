@@ -15,6 +15,30 @@ connection.query('SELECT * FROM users', (err:any, result : any)=>{
     return console.log(result)
 });
 
+//Get all desks for a site
+function sqlgetAllDesks(site:String){connection.query('SELECT * FROM desks INNER JOIN sites ON desks.site_idA = sites.site_id WHERE sites.site = "' +site+'"' , (err:any, result : any)=>{
+  if (err) throw err;
+    return console.log(result)
+});}
+
+sqlgetAllDesks('Gloucester'
+
+);
+
+//Get all bookings for a given date
+function sqlgetAllbookings(site:String,desk:String, dateto:Date,datefrom:Date )
+{connection.query('SELECT * FROM desks_bookings WHERE booking_site = "' +site+'" AND ((booking_datefrom >= '+datefrom+' AND booking_datefrom<dateto))'  , (err:any, result : any)=>{
+  if (err) throw err;
+    return console.log(result)
+});}
+
+//sqlgetAllbookings(''
+
+//);
+
+
+
+
 //app.listen(8000, () => console.log('Listening for queries on port 8000')); 
 
 connection.end();
