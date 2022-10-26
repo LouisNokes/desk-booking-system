@@ -3,7 +3,7 @@ CREATE TABLE users (
     name VARCHAR(50),
     email VARCHAR(70));
 
-INSERT INTO users (usr_id, name, email) VALUES (3, 'David', 'david123@gmail.com');
+INSERT INTO users (usr_id, name, email) VALUES (3, 'John', 'david123@gmail.com');
 
 SELECT * FROM users;
 

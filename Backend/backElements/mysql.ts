@@ -17,6 +17,28 @@ connection.query('SELECT * FROM users', (err:any, result : any)=>{
 
 //app.listen(8000, () => console.log('Listening for queries on port 8000')); 
 
+//Insert employee 1
+
+app.get("users", (req, res) => {
+
+  let post = { name: "Jake Smith", email: "js@gmail.com" };
+
+  let sql = "INSERT INTO users SET ?";
+
+  let query = connection.query(sql, post, (err: any) => {
+
+    if (err) {
+
+      throw err;
+
+    }
+
+    res.send("desk booked");
+
+  });
+
+});
+
 connection.end();
 
 
