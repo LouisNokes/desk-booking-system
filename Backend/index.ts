@@ -10,10 +10,13 @@ if (useSQL) {
 else {
     var db = require("./backElements/mongoDB");
     db.connecter();
+    //db.book("Gloucester", 10,"Edward", "22/03/2022", "25/03/2022");
+    //db.bookings();
+    db.userCheck("edward.l.jones@raytheon.co.uk");
 }
 
 
-//app.get('api/', (req,res) => { res.status(200).send("succcess")});
+//app.get('api/', (req,res) =>  { res.status(200).send("succcess")});
 //app.get('api/:id', (req,res) => { res.status(200).send(req.query.id)});
 //app.post('api/', (req,res) => {req.send(req.params)});
 
