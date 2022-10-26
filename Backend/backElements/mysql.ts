@@ -15,26 +15,74 @@ connection.query('SELECT * FROM users', (err:any, result : any)=>{
     return console.log(result)
 });
 
-//Get all desks for a site
+/* //Get all desks for a site...............
 function sqlgetAllDesks(site:String){connection.query('SELECT * FROM desks INNER JOIN sites ON desks.site_idA = sites.site_id WHERE sites.site = "' +site+'"' , (err:any, result : any)=>{
   if (err) throw err;
     return console.log(result)
 });}
+ */
+//sqlgetAllDesks('Gloucester'
 
-sqlgetAllDesks('Gloucester'
+//);
 
-);
+/* //Get all bookings for a given date...........
+let date1= new Date('2022-10-26')
+let date2 = new Date('2022-10-28')
+let date3 = "'"+  date1.getUTCFullYear() + '-' + (date1.getMonth()+1) + "-" + date1.getDate()+"'" ;
+let date4 = "'"+ date2.getUTCFullYear() + '-' + (date2.getMonth()+ 1) + '-' + date2.getDate() +"'" ;
 
-//Get all bookings for a given date
-function sqlgetAllbookings(site:String,desk:String, dateto:Date,datefrom:Date )
-{connection.query('SELECT * FROM desks_bookings WHERE booking_site = "' +site+'" AND ((booking_datefrom >= '+datefrom+' AND booking_datefrom<dateto))'  , (err:any, result : any)=>{
+function sqlgetAllbookings(site:String,desk:Number, dateto:String,datefrom:String )
+{ let query = 'SELECT * FROM desk_bookings INNER JOIN sites ON desk_bookings.booking_site = sites.site_id WHERE sites.site = "' +site+'" AND booking_desk = '+desk+' AND ((booking_datefrom >= '+datefrom+' AND booking_datefrom <= '+dateto+') OR (booking_dateto <= '+dateto+' AND booking_dateto >= '+datefrom+') OR (booking_datefrom <= '+datefrom+' AND booking_dateto >= '+dateto+')) ' ;
+console.log(query);
+  connection.query('SELECT * FROM desk_bookings INNER JOIN sites ON desk_bookings.booking_site = sites.site_id WHERE sites.site = "' +site+'" AND booking_desk = '+desk+' AND ((booking_datefrom >= '+datefrom+' AND booking_datefrom <= '+dateto+') OR (booking_dateto <= '+dateto+' AND booking_dateto >= '+datefrom+') OR (booking_datefrom <= '+datefrom+' AND booking_dateto >= '+dateto+')) '  , (err:any, result : any)=>{
+  if (err) throw err;
+    return console.log(result)
+});} 
+//console.log(date1.getFullYear())
+
+sqlgetAllbookings('Manchester',12, date3 ,date4)
+
+;
+ */
+/* //Get a single desk for a given site..............
+function sqlgetSingleDesk (site:String, desks:Number){connection.query('SELECT * FROM desks INNER JOIN sites ON desks.site_idA = sites.site_id WHERE desk_number = '+desks+'  AND  site = "'+site+'"' , (err:any, result : any)=>{
   if (err) throw err;
     return console.log(result)
 });}
 
-//sqlgetAllbookings(''
+sqlgetSingleDesk('Gloucester',7
 
-//);
+);
+ */
+
+//ADD A BOOKING................
+function sqlAddBooking(book_desk:Number,book_site:Number,booking_datefrom:Date,booking_dateto:Date, booking_userid:Number)
+{let post = { booking_desk:book_desk ,booking_site:book_site, booking_datefrom:'2022-10-19', booking_dateto:'2022-10-20',booking_userid:3 };
+let sql = "INSERT INTO desk_bookings SET ?";
+connection.query(sql, post, (err: any) => {
+
+  if (err) {
+
+    throw err;
+
+  };
+})}
+
+
+/* let post = { booking_desk:12 ,booking_site:12, booking_datefrom:'2022-10-19', booking_dateto:'2022-10-20',booking_userid:3 };
+let sql = "INSERT INTO desk_bookings SET ?";
+
+let query = connection.query(sql, post, (err: any) => {
+
+  if (err) {
+
+    throw err;
+
+  };
+})
+ */
+
+
 
 
 
