@@ -10,15 +10,19 @@ if (useSQL) {
 else {
     var db = require("./backElements/mongoDB");
     db.connecter();
+    //db.book("Gloucester", 10,"Edward", "22/03/2022", "25/03/2022");
+    //db.bookings();
+    db.userCheck("edward.l.jones@raytheon.co.uk");
 }
 
 
-//app.get('api/', (req,res) => { res.status(200).send("succcess")});
+//app.get('api/', (req,res) =>  { res.status(200).send("succcess")});
 //app.get('api/:id', (req,res) => { res.status(200).send(req.query.id)});
 //app.post('api/', (req,res) => {req.send(req.params)});
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
 
 
 //Check Username against list
@@ -44,6 +48,7 @@ app.get('/api/user/:id', (req, res) => {
         res.status(404).send("User Not found");
     }
 });
+
 app.post('/api/user/', (req, res) => {
     const user = authentication(req.body.id);
 
@@ -105,7 +110,7 @@ app.get('/api/book/desks/:site/:seatNum/:date', (req, res) => {
 
 //Book Seat for given period
 const makeBooking = require("./backElements/makeBooking");
-
+//
 app.post('/api/desks/book/', (req, res) => {
     const confirm = makeBooking.bookDesk(req.body);
     //console.log("==========");
