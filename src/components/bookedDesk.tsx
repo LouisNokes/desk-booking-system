@@ -8,11 +8,11 @@ interface BookedProps {
 }
 
 export const BookedDesk: FC<BookedProps> = () => {
-    const [bookDesk, setBookedDesk] = useState<any>();
+    const [bookDesk, setBookedDesk] = useState<any>('');
 
     useEffect(() => {
         const fetchBookedDesk = async () => {
-            const response = await fetch('/api/desks/Manchester')
+            const response = await fetch('/api/desk')
             const json = await response.json()
             if (response.ok) {
                 setBookedDesk(json)
@@ -25,7 +25,8 @@ export const BookedDesk: FC<BookedProps> = () => {
     return (
         <div className="Second-comp">
             {bookDesk && bookDesk.map((desk: any) => (
-                <Desk key={desk.seatNum} desk={desk}></Desk>
+                <Desk key={desk._id} desk={desk}>
+                </Desk>
             ))}
         </div>
     );
