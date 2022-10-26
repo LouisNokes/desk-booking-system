@@ -18,26 +18,5 @@ function connecter() {
     });
 };
 
-
-
-// Mandatory 
-
-
-
-// Get a single desk for a site
-
-
-// Add a booking
-
-
-// Stretch goals
-
-
-// General availability
-
-
-
-
-
 module.exports.connecter = connecter;
 

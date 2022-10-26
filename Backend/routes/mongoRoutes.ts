@@ -4,13 +4,13 @@ const { mongoDesks, mongoSingleDesk, mongoBookingByDate, mongoUserExist } = requ
 const router = express.Router();
 
 //Get all desk for site
-router.get('/desk', mongoDesks);
+router.get('/desk/site/:site', mongoDesks);
 
 //Get a single desk
 router.get('/desk/:id', mongoSingleDesk);
 
 //Get a booking for date
-router.get('/booking', mongoBookingByDate);
+router.get('/booking/site/:site/fromDate/:fromDate', mongoBookingByDate);
 
 //Check user exist
 router.get('/user/:id', mongoUserExist);

@@ -45,6 +45,7 @@ app.get('/api/user/:id', (req, res) => {
         res.status(404).send("User Not found");
     }
 });
+
 app.post('/api/user/', (req, res) => {
     const user = authentication(req.body.id);
 
@@ -106,7 +107,7 @@ app.get('/api/book/desks/:site/:seatNum/:date', (req, res) => {
 
 //Book Seat for given period
 const makeBooking = require("./backElements/makeBooking");
-
+//
 app.post('/api/desks/book/', (req, res) => {
     const confirm = makeBooking.bookDesk(req.body);
     //console.log("==========");

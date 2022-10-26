@@ -1,12 +1,9 @@
 import React, { FC, useState } from 'react';
+
 import Dropdown from 'react-dropdown';
 import DateRangePicker from 'rsuite/DateRangePicker';
 import '../App.css';
 import logo from './logo.png';
-
-interface bookingProps {
-
-}
 
 const locations = [
     'Manchester', 'Gloucester'
@@ -14,18 +11,20 @@ const locations = [
 
 const time = ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:30', '04:00', '04:30', '05:00', '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00', "23:30"];
 
-export const BookingDesk: FC<bookingProps> = () => {
+export const BookingDesk: FC<any> = ({ loc, setLoc, dates, setDates }) => {
+
+    const arrowClosed = (
+        <span className="arrow-closed" />
+    )
+    const arrowOpen = (
+        <span className="arrow-open" />
+    )
     //Defines state of variables for use with the form
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [dates, setDates] = useState<any>();
-    const [loc, setLoc] = useState<string>();
     const [seat, setSeat] = useState<string>();
-
-
     //Created a state variable for recieving the most recent booking
     const [sucBooking, setSucBooking] = useState<object>();
-
 
     //When form submit run this code, should send POST request to backend
     const handleSubmit = (event: any) => {
@@ -34,7 +33,6 @@ export const BookingDesk: FC<bookingProps> = () => {
         alert(`Email ${email} , Loc ${loc} , seat ${seat} , date from ${dates[0]} , date to ${dates[1]}`)
 
         alert(`Email ${email} , Loc ${loc} , seat ${seat} , date from ${dates[0].toLocaleDateString()} , date to ${dates[1].toLocaleDateString()}`)
-
 
         const requestOptions = {
             method: 'POST',
@@ -52,7 +50,7 @@ export const BookingDesk: FC<bookingProps> = () => {
     //Updates state variable SeatNumb to site specific as grabbed by API
     const updateSeats = (val: string) => {
         //Default form handling
-        setLoc(val);
+
 
         //Clears seatNum variable 
         setSeatNumb([]);
@@ -81,17 +79,36 @@ export const BookingDesk: FC<bookingProps> = () => {
                 {/* Input div for name and email*/}
                 <div className='Input-div'>
                     <input placeholder='Email' className='Comp-input' style={{ marginTop: 5 }} type="text" value={email} onChange={(e) => { setEmail(e.target.value); console.log(email); }}></input>
-                    <input placeholder='Name' className='Comp-input' style={{ marginTop: 5 }} value={name} onChange={(e) => { setName(e.target.value); console.log(name); }}></input>
+                    <input placeholder='Name' className='Comp-input' style={{ marginTop: 5 }} value={name} onChange={(e) => { setName(e.target.value); }}></input>
                 </div>
                 {/* First dropdown menu div , Location and seats*/}
                 <div className='Drop-div'>
-                    <Dropdown className='Drop-down' arrowClassName='Arrow-class' options={locations} placeholder="Location" />
-                    <Dropdown className='Drop-down' arrowClassName='Arrow-class' options={seatNumb} placeholder="Desk number" />
+                    <Dropdown arrowClosed={arrowClosed}
+                        arrowOpen={arrowOpen}
+                        options={locations}
+                        placeholder="Site"
+                        onChange={(e) => {
+                            setLoc(e.value)
+                        }} />
+                    <Dropdown arrowClosed={arrowClosed}
+                        arrowOpen={arrowOpen}
+                        options={seatNumb}
+                        placeholder="Seat"
+                        onChange={(e) => { setSeat(e.value); }}
+                    />
                 </div>
                 {/* Second dropdown menu div, time selection */}
                 <div className='Drop-div-2'>
-                    <Dropdown className='Drop-down' arrowClassName='Arrow-class' options={time} placeholder="time-till" value={loc} onChange={(e) => { updateSeats(e.value); }} />
-                    <Dropdown className='Drop-down' arrowClassName='Arrow-class' options={time} placeholder="time-to" value={seat} onChange={(e) => { setSeat(e.value); console.log(seat); }} />
+                    <Dropdown arrowClosed={arrowClosed}
+                        arrowOpen={arrowOpen}
+                        options={time}
+                        placeholder="To"
+                        onChange={(e) => { updateSeats(e.value); }} />
+                    <Dropdown arrowClosed={arrowClosed}
+                        arrowOpen={arrowOpen}
+                        options={time}
+                        placeholder="From"
+                        onChange={(e) => { updateSeats(e.value); }} />
                 </div>
                 <div className='Calendar-div'>
                     <DateRangePicker className='calendar' showOneCalendar value={dates} onChange={(event) => { setDates(event!); console.log(dates); }} />
