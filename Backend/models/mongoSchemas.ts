@@ -29,7 +29,6 @@ const deskSchema = new Schema({
 });
 
 const bookingSchema = new Schema({
-
     bookingID: Number,
     user: {
         usrID: Number,
@@ -46,7 +45,6 @@ const bookingSchema = new Schema({
     toDate: String,
     fromTime: String,
     toTime: String,
-
 });
 
 const userModel = mongoose1.model('User', userSchema);

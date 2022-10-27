@@ -13,19 +13,18 @@ export const BookedDesk: FC<any> = ({ loc, dates }) => {
         return [day, mnth, date.getFullYear()].join("-");
     }
 
-    /*    useEffect(() => {
-           const fetchBookedDesk = async () => {
-               const response = await fetch(`/api/booking/site/${loc}/fromDate/${convert(dates)}`)
-               console.log(response);
-               const json = await response.json()
-               if (response.ok) {
-                   setBookedDesk(json)
-                   console.log(bookDesk);
-               }
-           }
-           fetchBookedDesk();
-   
-       }, [loc, dates]); */
+    useEffect(() => {
+        const fetchBookedDesk = async () => {
+            const response = await fetch(`/api/bookings/site/${loc}/fromDate/${convert(dates[0])}/toDate/${convert(dates[1])}`)
+            console.log(response);
+            const json = await response.json()
+            if (response.ok) {
+                setBookedDesk(json)
+            }
+        }
+        fetchBookedDesk();
+        console.log(bookDesk);
+    }, [loc, dates]);
 
     return (
         <div className="Second-comp">

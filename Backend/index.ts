@@ -12,7 +12,7 @@ else {
     db.connecter();
     //db.book("Gloucester", 10,"Edward", "22/03/2022", "25/03/2022");
     //db.bookings();
-    db.userCheck("edward.l.jones@raytheon.co.uk");
+    // db.userCheck("edward.l.jones@raytheon.co.uk");
 }
 
 

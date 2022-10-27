@@ -39,7 +39,7 @@ export const BookingDesk: FC<any> = ({ loc, setLoc, dates, setDates }) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id: `${email}`, seat: `${seat}`, site: `${loc}`, datefr: `${dates[0].toLocaleDateString()}`, dateto: `${dates[1].toLocaleDateString()}` })
         };
-        fetch('http://localhost:8000/api/desks/book/', requestOptions)
+        fetch('/api/desks/book/', requestOptions)
             .then(response => response.json())
             .then(data => alert(data));
     };
