@@ -30,8 +30,6 @@ export const BookingDesk: FC<any> = ({ loc, setLoc, dates, setDates }) => {
     const handleSubmit = (event: any) => {
         event.preventDefault();
 
-        alert(`Email ${email} , Loc ${loc} , seat ${seat} , date from ${dates[0]} , date to ${dates[1]}`)
-
         alert(`Email ${email} , Loc ${loc} , seat ${seat} , date from ${dates[0].toLocaleDateString()} , date to ${dates[1].toLocaleDateString()}`)
 
         const requestOptions = {
@@ -39,7 +37,7 @@ export const BookingDesk: FC<any> = ({ loc, setLoc, dates, setDates }) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ id: `${email}`, seat: `${seat}`, site: `${loc}`, datefr: `${dates[0].toLocaleDateString()}`, dateto: `${dates[1].toLocaleDateString()}` })
         };
-        fetch('http://localhost:8000/api/desks/book/', requestOptions)
+        fetch('/api/desks/book/', requestOptions)
             .then(response => response.json())
             .then(data => alert(data));
     };

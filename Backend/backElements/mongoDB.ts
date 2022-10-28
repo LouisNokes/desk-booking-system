@@ -51,37 +51,18 @@ function bookings() {
 
 
 };
-// Check availability for timeframe 
-
-
-// Get a single desk for a site
-
 
 // Check if a user exist
-function userCheck(email: string) {
+/* function userCheck(email: string) {
     const user = models.user;
     let resp = "";
     user.findOne({}).then((resp: any) => console.log(resp)).then((mongoose.connection.close()));
 
 };
-
-
-// Add a booking
-
-
-
-// Stretch goals
-
-
-// General availability
-
-
-
-
-
+ */
 module.exports.connecter = connecter;
 
 module.exports.bookings = bookings;
 module.exports.book = book;
-module.exports.userCheck = userCheck;
+//module.exports.userCheck = userCheck;
 
