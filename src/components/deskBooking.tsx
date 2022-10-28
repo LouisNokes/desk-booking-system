@@ -30,8 +30,6 @@ export const BookingDesk: FC<any> = ({ loc, setLoc, dates, setDates }) => {
     const handleSubmit = (event: any) => {
         event.preventDefault();
 
-        alert(`Email ${email} , Loc ${loc} , seat ${seat} , date from ${dates[0]} , date to ${dates[1]}`)
-
         alert(`Email ${email} , Loc ${loc} , seat ${seat} , date from ${dates[0].toLocaleDateString()} , date to ${dates[1].toLocaleDateString()}`)
 
         const requestOptions = {
