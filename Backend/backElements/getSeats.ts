@@ -53,14 +53,20 @@ const sitemap = {
 };
 
 
-function getSeats(site: string) {
 
-  console.log(site);
-  const stuff = sitemap;
+async function getSeats(site: string, db : any) {
 
+  //console.log(site);
+  //const stuff = 
+  return db.getAllDesks(site)
+  //.then((value : any) => {console.log(db.getAllDesks);return value;});
+  //console.log(db.getAllDesks(site));
+//return stuff ;
+
+/* 
   if (site === "Gloucester") { const siteinfo = stuff.Gloucester; return siteinfo; }
   else if (site === "Manchester") { const siteinfo = stuff.Manchester; return siteinfo; }
-  else { const siteinfo = null; return siteinfo; }
+  else { const siteinfo = null; return siteinfo; } */
 };
 
 

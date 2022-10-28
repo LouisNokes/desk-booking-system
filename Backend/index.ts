@@ -4,15 +4,16 @@ const app = express();
 
 let useSQL = false;
 if (useSQL) {
-    var db = require("./backElements/SQL");
-    db.connecter();
+    var db = require("./backElements/mysql");
+    db.connector();
+    //db.getAllDesks("Gloucester");
 }
 else {
     var db = require("./backElements/mongoDB");
     db.connecter();
     //db.book("Gloucester", 10,"Edward", "22/03/2022", "25/03/2022");
     //db.bookings();
-    db.userCheck("edward.l.jones@raytheon.co.uk");
+    //db.userCheck("edward.l.jones@raytheon.co.uk");
 }
 
 
@@ -65,12 +66,13 @@ app.post('/api/user/', (req, res) => {
 const getDesks = require("./backElements/getseats");
 
 function getSiteDesks(site: string) {
-    return getDesks.getSeats(site);
+    return getDesks.getSeats(site,db);
 };
 
-app.get('/api/desks/:site', (req, res) => {
-    const siteinfo = getSiteDesks(req.params.site);
-
+app.get('/api/desks/:site', async (req, res) => {
+    const siteinfo = await db.getAllDesks(req.params.site);
+    //getSiteDesks(req.params.site);
+ 
     if (siteinfo) {
         res.send(siteinfo);
     }
@@ -112,9 +114,7 @@ app.get('/api/book/desks/:site/:seatNum/:date', (req, res) => {
 const makeBooking = require("./backElements/makeBooking");
 //
 app.post('/api/desks/book/', (req, res) => {
-    const confirm = makeBooking.bookDesk(req.body);
-    //console.log("==========");
-    //console.log(confirm);
+    const confirm = makeBooking.bookDesk(req.body,db);
 
     if (confirm) {
         res.send(confirm);
@@ -125,8 +125,8 @@ app.post('/api/desks/book/', (req, res) => {
 });
 
 //temporary site get to show bookings will be deleted after persistence is done
-app.get("/api/temp/:site", (req, res) => {
-    res.send(makeBooking.bookingsCreated(req.params.site));
+app.get("/api/temp/", async (req, res) => {
+    res.send(await makeBooking.bookingsCreated(db));
 
 });
 
@@ -157,4 +157,4 @@ app.get("/", (req, res) => {
 });
 
 //Listens for request, Should be last to run, Keeps application running 
-//app.listen(8000, () => console.log('Listening for queries on port 8000')); 
+app.listen(8000, () => console.log('Listening for queries on port 8000')); 

@@ -46,7 +46,7 @@ const bookerDesk ={
    ]
 };
 
-function bookDesk(attemptBooking : any ){
+function bookDesk(attemptBooking : any, db : any ){
    
     console.log(attemptBooking);
    // var bookings : Array<object> = [];
@@ -54,10 +54,10 @@ function bookDesk(attemptBooking : any ){
     if(attemptBooking.site === "Gloucester"){var bookings : any = bookerDesk.Gloucester }
    //console.log(attemptBooking.id,attemptBooking.seat,attemptBooking.datefr,attemptBooking.dateto);
    else if(attemptBooking.site === "Manchester"){var bookings : any = bookerDesk.Manchester }
-   else{
+   else{  
       var bookings : any = [];
    }
-
+   db.book(attemptBooking.site,attemptBooking.seat,attemptBooking.id,attemptBooking.datefr,attemptBooking.dateto);
    const bookingId = bookings.length + 1;
     const booking = {
       //make booking object to push
@@ -83,13 +83,15 @@ function bookDesk(attemptBooking : any ){
 
 
 //backup function to show a booking was created
-function bookingsCreated(site : string){
-   if(site === "Gloucester"){var bookin : any = bookerDesk.Gloucester }
+async function bookingsCreated(db : any){
+  /*  if(site === "Gloucester"){var bookin : any = bookerDesk.Gloucester }
    //console.log(attemptBooking.id,attemptBooking.seat,attemptBooking.datefr,attemptBooking.dateto);
    else if(site === "Manchester"){var bookin : any = bookerDesk.Manchester }
    else{
       var bookin : any = [];
-   }
+   } */
+
+   let bookin = await db.bookings();
    return bookin;
 };
  
