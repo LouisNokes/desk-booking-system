@@ -1,6 +1,5 @@
 @import "rsuite/dist/rsuite.css";
 
-
 .App {
   text-align: center;
   flex-direction: row;
@@ -23,7 +22,7 @@ header .container {
   background-color: rgb(217, 215, 215);
   border-style: solid;
   border-color: black;
-  filter: drop-shadow(10px 10px 10px #A4BBFF);
+  filter: drop-shadow(10px 10px 10px #a4bbff);
 }
 
 .Second-comp {
@@ -45,12 +44,12 @@ header .container {
 
 .Comp-heading {
   font-size: 25px;
-  color: black;
+  color: red;
 }
 
 .Booked-title {
   font-size: 25px;
-  color: black;
+  color: red;
   margin-top: 13px;
 }
 
